@@ -29,6 +29,8 @@ class ApiCall < ActiveRecord::Base
       code.between?(200,299)
       #Disadvantages:
         #This includes HTTP protocol constants which do not belong in your api_call Model
+          #Knowledge is required about non-api_call constants by every developer who will change/expand/refactor api_call methods
+          #The code is closely coupled to those constants. If the constants change this code will have to change
         #This code is not reusable across models (workaround could be to include it in a Module)
         #Your model needs an extra method per http code (Fat Model):
           #Increased risk of method name conflicts
