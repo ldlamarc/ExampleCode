@@ -34,8 +34,8 @@ class ApiCall < ActiveRecord::Base
         #This code is not reusable across models (workaround could be to include it in a Module)
         #Your model needs an extra method per http code (Fat Model):
           #Increased risk of method name conflicts
-          #Increased risk of developpers using other formats/names for similar methods (e.g. http_client_error? instead of http_response_client_error?)
-          #Increased risk of developpers not knowing the existence of a method (hidden in a module or because the model code is too long to read)
+          #Increased risk of developers using other formats/names for similar methods (e.g. http_client_error? instead of http_response_client_error?)
+          #Increased risk of developers not knowing the existence of a method (hidden in a module or because the model code is too long to read)
           #Extra test per method
           #Extra time lost in reading/finding/comprehending a method
         #The method is very closely coupled to your database (if the field "code" is renamed or changed to a string you would need to change this method)
