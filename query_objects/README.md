@@ -113,6 +113,16 @@ User.where(id: users_with_comments_ids | non_paying_users_ids)
 
 This in my opinion is less error prone. But it is often a lot slower. It breaks if you start providing too many ids in the last step. And the output to the logs is also quite ugly and not easily understandable (an SQL query with many ids).
 
+###Alternative 4: select in a select
+
+This is similar to alternative 3 but is more recommendable. Though the previous example is hard to implement this way, it can be usefull in other situations:
+
+```ruby
+User.where(id: User.joins(:comments).select(:id))
+```
+
+Using select instead of pluck generates one query instead of 2.
+
 
 ##Using Query Objects
 
