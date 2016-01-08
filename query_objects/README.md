@@ -117,11 +117,14 @@ This in my opinion is less error prone. But it is often a lot slower. It breaks 
 
 This is similar to alternative 3 but is more recommendable. Though the previous example is hard to implement this way, it can be usefull in other situations:
 
+Basic usage:
 ```ruby
 User.where(id: User.joins(:comments).select(:id))
 ```
 
-Using select instead of pluck generates one query instead of two.
+This is better than pluck because select one query instead of two.
+
+Our previous example can be implemented with Arel unions in the where clause but it would again lead to verbose and error-prone code. Generally when you have very long lines of code or a lot of lines in the same method/query, the code becomes less and less readable.
 
 ##Using Query Objects
 
