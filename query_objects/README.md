@@ -121,7 +121,7 @@ This is similar to alternative 3 but is more recommendable. Though the previous 
 User.where(id: User.joins(:comments).select(:id))
 ```
 
-Using select instead of pluck generates one query instead of 2.
+Using select instead of pluck generates one query instead of two.
 
 
 ##Using Query Objects
