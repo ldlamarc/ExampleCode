@@ -15,11 +15,11 @@ Typical responsibilities of a Fat Model.
 9. ~~Giving meaning to attributes on the relational table (e.g. status: "p" means the document is printed)~~ with Value Objects, [see part 1](https://tothepoint-itco.squarespace.com/journal/2015/11/8/a-practical-introduction-to-ddd-and-ood-coming-from-standard-rails-part-1)
 
 
-In our previous article we talked about Value Objects. I chose it as a first topic because it gently introduces us to using non-standard Rails classes in our code to split responsibilities. In this second part I assume the reader has already read part 1 and has already experimented a bit with Value Objects in his own code. They are really the low hanging fruit of refactoring and should be applied first during a refactoring. We shall see through the series that Value Objects can often serve as buiding blocks for the other concepts as well.
+In our previous article we talked about Value Objects. I chose it as a first topic because it gently introduces us to using non-standard Rails classes in our code to split responsibilities. In this second part I assume the reader has already read part 1 and has already experimented a bit with Value Objects in his own code. They are really the low hanging fruit of refactoring and should be applied first. We shall see through the series that Value Objects can often serve as building blocks for the other concepts as well.
 
-But aside from refactoring and splitting responsibilities I often experienced problems in standard Rails constructing complex queries. ActiveRecord is not equipped (yet in Rails 4) to handle ORS, UNIONS, EXCEPTS to name the most important omissions. One can resort to raw SQL or Arel. But than one often faces problems of database portability/reusability in the former and verbose code in the second. This code also ends up in class methods, scopes or relations on ActiveRecord, giving our Object more responsibilities and methods, something we want to avoid.
+But aside from refactoring and splitting responsibilities I often experienced problems in standard Rails constructing complex queries. ActiveRecord is not equipped (yet in Rails 4) to handle ORS, UNIONS, EXCEPTS to name the most important omissions. One can resort to raw SQL or Arel. But then one often faces problems of database portability/reusability in the former and verbose code in the second. This code also ends up in class methods, scopes or relations on ActiveRecord, giving our Object more responsibilities and methods, something we want to avoid.
 
-Query objects are a tool to both construct these complex queries and take over responsibilities from the ActiveRecord.
+Query objects are a tool to construct these complex queries and take over responsibilities from our ActiveRecord.
 
 In the spirit of learning by example, the use case we are going to consider involves selecting records from a database. These records are selected by following multiple conditions that can not be expressed by using simple ANDS. Sometimes these conditions even make it hard to fetch all the records using ORS and ANDS requiring UNIONS and EXCEPTS.
 
@@ -79,7 +79,7 @@ merging the two naively:
 SELECT * FROM users INNER JOIN comments ON users.id = comments.user_id OR users.paying=false
 ```
 
-Does this work? No it doesn't because it does not include the users who do not have comments but who do have paying status 'false'.
+Does this work? No it doesn't because it doesn't include the users who do not have comments but who do have paying status 'false'.
 
 merging the two correctly:
 ```sql
@@ -122,7 +122,6 @@ User.where(id: User.joins(:comments).select(:id))
 ```
 
 Using select instead of pluck generates one query instead of two.
-
 
 ##Using Query Objects
 
