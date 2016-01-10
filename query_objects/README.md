@@ -204,7 +204,7 @@ end
 
 As you can see we can couple our Query Object to a scope. This is accomplished through the [call method](http://craftingruby.com/posts/2015/06/29/query-objects-through-scopes.html). Delegating this method to a new instance is basically just syntactic sugar for our scope.
 
-We dynamically extend our relation with new scopes using Rails [extending](http://apidock.com/rails/ActiveRecord/QueryMethods/extending). Another example can be found [here](http://helabs.com/blog/2014/01/18/turn-simple-with-query-objects/). This is not somehting I advise for every scenario. If you have a scope that is often used include it in your ActiveRecord. If the scope is only used rarely or in a specific context (for example a rake task) this can be very useful to avoid littering your ActiveRecord file.
+We dynamically extend our relation with new scopes using Rails [extending](http://apidock.com/rails/ActiveRecord/QueryMethods/extending). Another example can be found [here](http://helabs.com/blog/2014/01/18/turn-simple-with-query-objects/). This is not something I advise for every scenario. If you have a scope that is often used include it in your ActiveRecord. If the scope is only used rarely or in a specific context (for example a rake task) this can be very useful to avoid littering your ActiveRecord file.
 
 The conditions method keeps track of every query we want in our union. It's very easy to add or remove conditions.
 
