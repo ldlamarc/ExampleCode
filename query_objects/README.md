@@ -17,7 +17,7 @@ Typical responsibilities of a Fat Model.
 
 In our previous article we talked about Value Objects. I chose it as a first topic because it gently introduces us to using non-standard Rails classes in our code to split responsibilities. In this second part I assume the reader has already read part 1 and has already experimented a bit with Value Objects in his own code. They are really the low hanging fruit of refactoring and should be applied first. We shall see through the series that Value Objects can often serve as building blocks for the other concepts as well.
 
-But aside from refactoring and splitting responsibilities I often experienced problems in standard Rails constructing complex queries. ActiveRecord is not equipped (yet in Rails 4) to handle ORS, UNIONS, EXCEPTS to name the most important omissions. One can resort to raw SQL or Arel. But then one often faces problems of database portability/reusability in the former and verbose code in the second. This code also ends up in class methods, scopes or relations on ActiveRecord, giving our Object more responsibilities and methods, something we want to avoid.
+But aside from refactoring and splitting responsibilities I often experienced problems in standard Rails constructing complex queries. ActiveRecord is not equipped (yet in Rails 4) to handle ORS, UNIONS, EXCEPTS to name the most important omissions. One can resort to raw SQL or [Arel](https://github.com/rails/arel). But then one often faces problems of database portability/reusability in the former and verbose code in the second. This code also ends up in class methods, scopes or relations on ActiveRecord, giving our Object more responsibilities and methods, something we want to avoid.
 
 Query objects are a tool to construct these complex queries and take over responsibilities from our ActiveRecord.
 
@@ -124,7 +124,7 @@ User.where(id: User.joins(:comments).select(:id))
 
 This is better than pluck because select one query instead of two.
 
-Our previous example can be implemented with Arel unions in the where clause but it would again lead to verbose and error-prone code. Generally when you have very long lines of code or a lot of lines in the same method/query, the code becomes less and less readable.
+Our previous example can be implemented with [Arel unions](http://danshultz.github.io/talks/mastering_activerecord_arel/) in the where clause but it would again lead to verbose and error-prone code. Generally when you have very long lines of code or a lot of lines in the same method/query, the code becomes less and less readable.
 
 ##Using Query Objects
 
