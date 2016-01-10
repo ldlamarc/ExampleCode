@@ -88,7 +88,7 @@ SELECT * FROM users LEFT JOIN comments ON users.id = comments.user_id WHERE comm
 
 This works.
 
-We immediately sense that this process is error prone. This is still a simple example and we would have already written wrong code if we would not have been carefull.
+We immediately sense that this process is error prone. This is still a simple example and we would have already written wrong code if we would not have been careful.
 Furthermore the queries or parts of the queries are not easily reusable. We do not have any database portability. If directly inserted into our Model this code also looks ugly and takes up a lot of space.
 
 ###Alternative 2: writing raw Arel
@@ -115,7 +115,7 @@ This in my opinion is less error prone. But it is often a lot slower. It breaks 
 
 ###Alternative 4: select in a select
 
-This is similar to alternative 3 but is more recommendable. Though the previous example is hard to implement this way, it can be usefull in other situations:
+This is similar to alternative 3 but is more recommendable. Though the previous example is hard to implement this way, it can be useful in other situations:
 
 Basic usage:
 ```ruby
@@ -204,11 +204,11 @@ end
 
 As you can see we can couple our Query Object to a scope. This is accomplished through the [call method](http://craftingruby.com/posts/2015/06/29/query-objects-through-scopes.html). Delegating this method to a new instance is basically just syntactic sugar for our scope.
 
-We dynamically extend our relation with new scopes using Rails [extending](http://apidock.com/rails/ActiveRecord/QueryMethods/extending). Another example can be found [here](http://helabs.com/blog/2014/01/18/turn-simple-with-query-objects/). This is not somehting I advise for every scenario. If you have a scope that is often used include it in your ActiveRecord. If the scope is only used rarely or in a specific context (for example a rake task) this can be very usefull to avoid littering your ActiveRecord file.
+We dynamically extend our relation with new scopes using Rails [extending](http://apidock.com/rails/ActiveRecord/QueryMethods/extending). Another example can be found [here](http://helabs.com/blog/2014/01/18/turn-simple-with-query-objects/). This is not somehting I advise for every scenario. If you have a scope that is often used include it in your ActiveRecord. If the scope is only used rarely or in a specific context (for example a rake task) this can be very useful to avoid littering your ActiveRecord file.
 
 The conditions method keeps track of every query we want in our union. It's very easy to add or remove conditions.
 
-The query helper eventually constructs the UNION query. This is done via raw SQL in this example to keep it simple but can easily be subsituted by [Arel](https://robots.thoughtbot.com/using-arel-to-compose-sql-queries) or any other tool. QueryHelper can be extended with other usefull functions: EXCEPT for example.
+The query helper eventually constructs the UNION query. This is done via raw SQL in this example to keep it simple but can easily be subsituted by [Arel](https://robots.thoughtbot.com/using-arel-to-compose-sql-queries) or any other tool. QueryHelper can be extended with other useful functions: EXCEPT for example.
 
 The usefulness of Query Objects does certainly not stop here. They can be a gateway to using more [complex features of your database](https://robots.thoughtbot.com/active-record-eager-loading-with-query-objects-and-decorators) not provided by standard Rails as well.
 
