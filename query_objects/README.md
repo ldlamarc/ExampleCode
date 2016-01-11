@@ -27,7 +27,14 @@ In the spirit of learning by example, the use case we are going to consider invo
 
 Imagine we have these queries:
 
-{% gist e8a7a1001716b58c40c5 %}
+users_without_comments:
+```ruby
+User.includes(:comments).where(comments: {user_id: nil})
+```
+non_paying_users:
+```ruby
+User.where(paying: false)
+```
 
 These queries select the users who are 'inactive' on our system. We want a query to get them all.
 
