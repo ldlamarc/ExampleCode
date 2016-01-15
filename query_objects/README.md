@@ -1,3 +1,5 @@
+Published on [ToThePoint](https://tothepoint-itco.squarespace.com/journal/2016/1/10/a-practical-introduction-to-ddd-and-ood-coming-from-standard-rails-part-2)
+
 #Part 2: Query Objects
 
 ##Introduction
