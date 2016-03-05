@@ -16,7 +16,7 @@ Typical responsibilities of a Fat Model.
 
 ###Introduction
 
-Now that we are warmed up we continue our journey and look at Service Objects. The term 'service' is a very broad concept. Service Objects in a codebase can be used on every layer, on every scale, on every input and for all kinds of functionality. That's why it's essential to categorize services into different types of services with a common denominator. This does not mean you should restrict yourself to these types. Categories are useful as naming conventions in describing the similar groups of services. This facilitates discussing them and reasoning about them. We will hence explore different categories and see how service objects can be used in different ways. To keep the blog post orderly I will link to example code instead of inserting it inline.
+Now that we are warmed up we continue our journey and look at Service Objects. The term 'service' is a very broad concept. Service Objects in a codebase can be used on every layer, on every scale, on every input and for all kinds of functionality. That's why it's essential to categorize services into different types of services with a common denominator. This does not mean you should restrict yourself to these types. Categories are useful as naming conventions in describing the similar groups of services. This facilitates discussing them and reasoning about them. We will hence explore different categories and see how service objects can be used in different ways. To keep the blog post orderly I will link to example code instead of inserting it inline. The code contains further commentary detailling decisions on an implementation level.
 
 ### Function the service accomplishes
 
